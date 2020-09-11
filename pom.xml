@@ -106,7 +106,7 @@
         <hadoop2.version>2.7.3</hadoop2.version>
         <hive2.version>2.3.6</hive2.version>
         <junit.version>4.12</junit.version>
-        <slf4j.version>1.7.12</slf4j.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.1.11</logback.version>
         <joda.version>2.9.9</joda.version>
         <spark.version>2.4.3</spark.version>
@@ -137,6 +137,27 @@
         <!-- Exclude all generated code -->
         <sonar.exclusions>**/generated-sources</sonar.exclusions>
         <!-- By default, the argLine is empty-->
+        <netty.version>4.1.42.Final</netty.version>
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+        <log4j.version>1.2.7</log4j.version>
+        <lz4.version>1.3.0</lz4.version>
+        <progressbar.version>0.7.3</progressbar.version>
+        <jaxb-runtime.version>2.4.0-b180725.0644</jaxb-runtime.version>
+        <javassist.version>3.24.0-GA</javassist.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
+        <mockito-core.version>2.23.0</mockito-core.version>
+        <objenesis.version>3.0.1</objenesis.version>
+        <powermock.version>2.0.2</powermock.version>
+        <scalatest_2.11.version>3.0.5</scalatest_2.11.version>
+        <snappy-java.version>1.1.7.2</snappy-java.version>
+        <mqtt-client.version>1.12</mqtt-client.version>
+        <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
+        <jsonwebtoken.version>0.10.7</jsonwebtoken.version>
+        <oauth2-oidc-sdk.version>8.3</oauth2-oidc-sdk.version>
+        <clearspring.analytics.stream>2.9.5</clearspring.analytics.stream>
+        <osgi.version>6.0.0</osgi.version>
+        <pax-jdbc-common.version>1.4.5</pax-jdbc-common.version>
+        <codehaus.jackson.verision>1.9.13</codehaus.jackson.verision>
         <argLine/>
     </properties>
     <!--
@@ -228,12 +249,12 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
-                <version>4.1.42.Final</version>
+                <version>${netty.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.annotation</groupId>
                 <artifactId>javax.annotation-api</artifactId>
-                <version>1.3.2</version>
+                <version>${javax.annotation-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.xml.bind</groupId>
@@ -253,12 +274,12 @@
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
-                <version>1.2.17</version>
+                <version>${log4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.jpountz.lz4</groupId>
                 <artifactId>lz4</artifactId>
-                <version>1.3.0</version>
+                <version>${lz4.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
@@ -288,7 +309,7 @@
             <dependency>
                 <groupId>me.tongfei</groupId>
                 <artifactId>progressbar</artifactId>
-                <version>0.7.3</version>
+                <version>${progressbar.version}</version>
                 <exclusions>
                     <!-- This transitive dependency duplicates classes from jline:jline:jar:2.14.5:compile -->
                     <exclusion>
@@ -340,17 +361,17 @@
             <dependency>
                 <groupId>org.codehaus.jackson</groupId>
                 <artifactId>jackson-core-asl</artifactId>
-                <version>1.9.13</version>
+                <version>${codehaus.jackson.verision}</version>
             </dependency>
             <dependency>
                 <groupId>org.codehaus.jackson</groupId>
                 <artifactId>jackson-mapper-asl</artifactId>
-                <version>1.9.13</version>
+                <version>${codehaus.jackson.verision}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
-                <version>2.4.0-b180725.0644</version>
+                <version>${jaxb-runtime.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>jakarta.activation</groupId>
@@ -361,37 +382,37 @@
             <dependency>
                 <groupId>org.javassist</groupId>
                 <artifactId>javassist</artifactId>
-                <version>3.24.0-GA</version>
+                <version>${javassist.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
-                <version>1.10.19</version>
+                <version>${mockito-all.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>2.23.0</version>
+                <version>${mockito-core.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.objenesis</groupId>
                 <artifactId>objenesis</artifactId>
-                <version>3.0.1</version>
+                <version>${objenesis.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.powermock</groupId>
                 <artifactId>powermock-core</artifactId>
-                <version>2.0.2</version>
+                <version>${powermock.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.powermock</groupId>
                 <artifactId>powermock-api-mockito2</artifactId>
-                <version>2.0.2</version>
+                <version>${powermock.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.powermock</groupId>
                 <artifactId>powermock-module-junit4</artifactId>
-                <version>2.0.2</version>
+                <version>${powermock.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.scala-lang</groupId>
@@ -406,32 +427,32 @@
             <dependency>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest_2.11</artifactId>
-                <version>3.0.5</version>
+                <version>${scalatest_2.11.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
-                <version>1.7.25</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
-                <version>1.7.25</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.25</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>1.7.25</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.xerial.snappy</groupId>
                 <artifactId>snappy-java</artifactId>
-                <version>1.1.7.2</version>
+                <version>${snappy-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.thrift</groupId>
@@ -456,14 +477,59 @@
             <dependency>
                 <groupId>org.fusesource.mqtt-client</groupId>
                 <artifactId>mqtt-client</artifactId>
-                <version>1.12</version>
+                <version>${mqtt-client.version}</version>
             </dependency>
             <!-- many dependencies (hadoop, spark, hive, flink) use findbugs but with different version...-->
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
                 <!-- spark uses the lastest version than hive, flink and hadoop-->
-                <version>3.0.2</version>
+                <version>${findbugs.jsr305.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.clearspring.analytics</groupId>
+                <artifactId>stream</artifactId>
+                <version>${clearspring.analytics.stream}</version>
+            </dependency>
+            <!--        compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jsonwebtoken.version}</version>
+            </dependency>
+            <!-- Impl -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jsonwebtoken.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jsonwebtoken.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>oauth2-oidc-sdk</artifactId>
+                <version>${oauth2-oidc-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi.cmpn</artifactId>
+                <version>${osgi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.jdbc</groupId>
+                <artifactId>pax-jdbc-common</artifactId>
+                <version>${pax-jdbc-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>${osgi.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
