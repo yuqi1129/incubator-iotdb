@@ -19,6 +19,8 @@
 package org.apache.iotdb.db.metadata;
 
 import java.util.Arrays;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.iotdb.db.conf.IoTDBConstant;
 import org.apache.iotdb.db.exception.metadata.IllegalPathException;
 import org.apache.iotdb.db.utils.TestOnly;
@@ -103,14 +105,9 @@ public class PartialPath extends Path implements Comparable<Path> {
   public String getFullPath() {
     if (fullPath != null) {
       return fullPath;
-    } else {
-      StringBuilder s = new StringBuilder(nodes[0]);
-      for (int i = 1; i < nodes.length; i++) {
-        s.append(TsFileConstant.PATH_SEPARATOR).append(nodes[i]);
-      }
-      fullPath = s.toString();
-      return fullPath;
     }
+
+    return String.join(TsFileConstant.PATH_SEPARATOR, nodes);
   }
 
   @Override
@@ -149,18 +146,17 @@ public class PartialPath extends Path implements Comparable<Path> {
   public String getDevice() {
     if (device != null) {
       return device;
-    } else {
-      if (nodes.length == 1) {
-        return "";
-      }
-      StringBuilder s = new StringBuilder(nodes[0]);
-      for (int i = 1; i < nodes.length - 1; i++) {
-        s.append(TsFileConstant.PATH_SEPARATOR);
-        s.append(nodes[i]);
-      }
-      device = s.toString();
-      return device;
     }
+
+    int length = nodes.length;
+    if (length <= 1) {
+      return StringUtils.EMPTY;
+    }
+
+    String[] names = new String[length - 1];
+    System.arraycopy(nodes, 0, names, 0, length - 1);
+
+    return String.join(TsFileConstant.PATH_SEPARATOR, names);
   }
 
   public String getMeasurementAlias() {

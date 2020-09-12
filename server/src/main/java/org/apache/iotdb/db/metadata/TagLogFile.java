@@ -26,6 +26,8 @@ import org.apache.iotdb.tsfile.utils.ReadWriteIOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -114,40 +116,26 @@ public class TagLogFile implements AutoCloseable {
   }
 
   private int serializeMap(Map<String, String> map, ByteBuffer byteBuffer, int length) throws MetadataException {
-    if (map == null) {
-      length += Integer.BYTES;
-      if (length > MAX_LENGTH) {
-        throw new MetadataException(LENGTH_EXCEED_MSG);
-      }
-      ReadWriteIOUtils.write(0, byteBuffer);
-      return length;
+
+    final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
+
+    int dataSize;
+    byte[] data;
+    try {
+      dataSize = ReadWriteIOUtils.write(map, dataOutputStream);
+      data = byteArrayOutputStream.toByteArray();
+    } catch (IOException e) {
+      throw new MetadataException(e);
     }
-    length += Integer.BYTES;
-    if (length > MAX_LENGTH) {
+
+    int totalSize = length + dataSize;
+    if (totalSize > MAX_LENGTH) {
       throw new MetadataException(LENGTH_EXCEED_MSG);
     }
-    ReadWriteIOUtils.write(map.size(), byteBuffer);
-    byte[] bytes;
-    for (Map.Entry<String, String> entry : map.entrySet()) {
-      // serialize key
-      bytes = entry.getKey().getBytes();
-      length += (4 + bytes.length);
-      if (length > MAX_LENGTH) {
-        throw new MetadataException(LENGTH_EXCEED_MSG);
-      }
-      ReadWriteIOUtils.write(bytes.length, byteBuffer);
-      byteBuffer.put(bytes);
 
-      // serialize value
-      bytes = entry.getValue().getBytes();
-      length += (4 + bytes.length);
-      if (length > MAX_LENGTH) {
-        throw new MetadataException(LENGTH_EXCEED_MSG);
-      }
-      ReadWriteIOUtils.write(bytes.length, byteBuffer);
-      byteBuffer.put(bytes);
-    }
-    return length;
+    byteBuffer.put(data);
+    return totalSize;
   }
 
   @Override

@@ -104,8 +104,8 @@ public class Metadata implements Serializable {
     }
 
     for (Entry<String, List<String>> entry : map1.entrySet()) {
-      List list1 = entry.getValue();
-      List list2 = map2.get(entry.getKey());
+      List<String> list1 = entry.getValue();
+      List<String> list2 = map2.get(entry.getKey());
 
       if (!listEquals(list1, list2)) {
         return false;
@@ -114,11 +114,9 @@ public class Metadata implements Serializable {
     return true;
   }
 
-  private boolean listEquals(List list1, List list2) {
-    Set set1 = new HashSet();
-    set1.addAll(list1);
-    Set set2 = new HashSet();
-    set2.addAll(list2);
+  private <T> boolean listEquals(List<T> list1, List<T> list2) {
+    Set<T> set1 = new HashSet<T>(list1);
+    Set<T> set2 = new HashSet<T>(list2);
 
     return set1.equals(set2);
   }
